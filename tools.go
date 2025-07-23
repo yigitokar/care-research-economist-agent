@@ -1,3 +1,6 @@
+//go:build legacytools
+// +build legacytools
+
 package main
 
 import (

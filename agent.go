@@ -7,6 +7,8 @@ import (
 	"io"
 	"strings"
 
+	"agent/tooling"
+
 	openai "github.com/sashabaranov/go-openai"
 )
 
@@ -61,7 +63,7 @@ func (a *Agent) Ask(ctx context.Context, user string) error {
 		Model:     a.model,
 		Stream:    true,
 		Messages:  a.history,
-		Functions: FunctionDefinitions,
+		Functions: tooling.Definitions(),
 	})
 	if err != nil {
 		return err
@@ -115,7 +117,7 @@ func (a *Agent) Ask(ctx context.Context, user string) error {
 	// If the assistant triggered a tool, handle it and loop once more
 	if len(fullMsg.ToolCalls) > 0 {
 		for _, tc := range fullMsg.ToolCalls {
-			tool, found := toolMap[tc.Function.Name]
+			tool, found := tooling.Map()[tc.Function.Name]
 			if !found {
 				fmt.Printf("⚠️ unknown tool: %s\n", tc.Function.Name)
 				continue
