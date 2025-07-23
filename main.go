@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/common-nighthawk/go-figure"
 	"github.com/joho/godotenv"
 	openai "github.com/sashabaranov/go-openai"
 )
@@ -15,6 +16,11 @@ import (
 func main() {
 	// Load .env so GROQ_API_KEY becomes visible
 	_ = godotenv.Load()
+
+	// Display ASCII art banner
+	myFigure := figure.NewFigure("Economist Agent", "speed", true)
+	myFigure.Print()
+	fmt.Println()
 
 	key := os.Getenv("GROQ_API_KEY")
 	if key == "" {
