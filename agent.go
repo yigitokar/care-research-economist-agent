@@ -122,6 +122,9 @@ func (a *Agent) Ask(ctx context.Context, user string) error {
 			}
 
 			out, err := tool.Call(json.RawMessage(tc.Function.Arguments))
+			if out == "" {
+				out = "(empty)"
+			}
 			if err != nil {
 				fmt.Printf("🛠  error: %v\n", err)
 				continue
