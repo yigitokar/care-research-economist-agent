@@ -19,8 +19,8 @@ A CLI-based economic research agent that provides an interactive REPL interface 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/code-editing-agent.git
-cd code-editing-agent
+git clone https://github.com/yourusername/care-research-economist-agent.git
+cd care-research-economist-agent
 ```
 
 2. Create a `.env` file in the root directory:
@@ -43,7 +43,7 @@ go run .
 Or build and run:
 ```bash
 go build
-./code-editing-agent
+./care-research-economist-agent
 ```
 
 ## Available Tools
