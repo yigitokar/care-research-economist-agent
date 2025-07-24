@@ -1,4 +1,4 @@
-# Code Editing Agent
+# Care Research Economist Agent
 
 A CLI-based economic research agent that provides an interactive REPL interface for economic analysis and research assistance.
 
@@ -92,4 +92,4 @@ Feel free to open issues or submit pull requests for improvements.
 
 ## License
 
-[Add your license here]
+MIT License
