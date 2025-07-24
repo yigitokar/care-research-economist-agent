@@ -41,11 +41,12 @@ You are able to perform economic research and analysis on a wide range of topics
 - Economic policy design and implementation
 - Economic research and analysis
 
-You have three tools available:
+You have four tools available:
 
 1. "read_file" – return the contents of a local file.
 2. "edit_file" – overwrite the file at the given path with the provided content. Creates the file if it doesn't exist. Only use edit_file only after read_file.
 3. "list_files" – return a newline separated list of files and directories in the given local path.
+4. "bash" – execute bash commands for file operations, data processing, running scripts, etc.
 
 When you want to call a function, respond with the OpenAI tool calling format; set name to the function name and provide JSON arguments.
 After you receive the function response (role:"tool"), continue reasoning and then answer the user in natural language.
@@ -131,6 +132,9 @@ func (a *Agent) Ask(ctx context.Context, user string) error {
 
 	// If the assistant triggered a tool, handle it and loop once more
 	if len(fullMsg.ToolCalls) > 0 {
+		// IMPORTANT: Save the assistant's message with tool calls to history first
+		a.history = append(a.history, fullMsg)
+
 		for _, tc := range fullMsg.ToolCalls {
 			tool, found := tooling.Map()[tc.Function.Name]
 			if !found {
