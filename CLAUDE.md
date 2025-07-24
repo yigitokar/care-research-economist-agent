@@ -38,8 +38,3 @@ This is a CLI-based economic research agent that provides an interactive REPL in
 - Uses Groq's API endpoint: `https://api.groq.com/openai/v1`
 - Model: `moonshotai/kimi-k2-instruct`
 - Requires `GROQ_API_KEY` in `.env` file
-
-**Tool System:**
-The agent supports extensible tools through the OpenAI function calling interface. New tools can be added in `tools.go` by:
-1. Defining the tool schema in `getTools()`
-2. Implementing the handler in `executeTool()`
